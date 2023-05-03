@@ -21,8 +21,6 @@ def record_outfit():
         print(f"{index + 1}. {category}")
     occasion_index = int(input("Enter the number of the occasion: ")) - 1
     occasion = categories[occasion_index]
-    print(occasion_index)
-    print(occasion)
     
     # Display clothing categories and get user input
     clothing_types = {'Crop': ['Dance Studio Crop'], 'Jacket': ['Down for it all Jacket'], \
