@@ -7,6 +7,12 @@ def record_outfit():
     # Get current date and time
     now = datetime.now()
     date_time = now.strftime("%m/%d/%Y %H:%M:%S")
+
+    # Get current weather information
+    info = requests.get('https://api.openweathermap.org/data/2.5/weather?q=Waterloo,Canada&units=metric&APPID=2a208e91572499972c72ba6cc6e84a5f')
+    weather = info.json()
+    feels_like = weather['main']['feels_like']
+
     
     # Display occasion options and get user input
     categories = ['Tennis', 'Golf', 'Every Day', 'Gym', 'Other']
@@ -69,7 +75,7 @@ def record_outfit():
         chosen_colour = int(input(f"Enter the number of the {clothing_name} colour you wore: "))
         selections.append([clothing_types[category][selection - 1], colours[clothing_name][chosen_colour - 1]])
 
-    torecord = [date_time, occasion]
+    torecord = [date_time,(f'Temperature: {feels_like} °C'), occasion]
     torecord.extend(selections)
     return torecord
 
